@@ -2,6 +2,10 @@ require("dotenv").config();
 const express = require(`express`);
 const mongoose= require("mongoose");
 
+const connection = require("./db/connection")
+
+connection();
+
 console.log(process.env.MY_WORD);
 
 const app = express();
@@ -10,12 +14,7 @@ const fakedb =[]
 app.listen(5000,()=> console.log ("server is listening on port 5000"))
 app.use(express.json());
 
-const connection= async () =>{
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log("DB is working");
-};
 
-connection();
 
 // book model
 const bookSchema = new mongoose.Schema({
