@@ -15,16 +15,7 @@ connection();
 app.use(bookRouter);
 
 // delete one book by title
-app.delete ("/books/deletebookbytitle", async(request, response) => {
-    try {
-        const books = await Book.deleteOne({
-        title: request.body.title            
-        });
-        response.send({ message:  "success", allbooks: books });
-        } catch (error) {
-        console.log(error)
-        }
-    });
+
     app.put("/books/updatebookauthor", async(request, response) =>{
         const query={title:request.body.title};
         const book = await Book.findOneAndUpdate(query,{author: request.body.author})

@@ -22,11 +22,17 @@ const deletebookbytitle = async(request, response) => {
         } catch (error) {
         console.log(error)
         }
-    };
-    
+};
+
+const updatebookauthor = async(request, response) =>{
+    const query={title:request.body.title};
+    const book = await Book.findOneAndUpdate(query,{author: request.body.author})
+   response.send({message: "success", book:book})
+};
 
 module.exports= {
     addbook: addbook,
     getAllBooks: getAllBooks,
-    deletebookbytitle: deletebookbytitle
+    deletebookbytitle: deletebookbytitle,
+    updatebookauthor: updatebookauthor
 };
