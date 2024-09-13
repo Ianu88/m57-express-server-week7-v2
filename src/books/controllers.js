@@ -13,10 +13,20 @@ const getAllBooks = async(request, response) =>{
     const books = await Book.find({});
     response.send ({message: "success", books: books})
 }
-
+const deletebookbytitle = async(request, response) => {
+    try {
+        const books = await Book.deleteOne({
+        title: request.body.title            
+        });
+        response.send({ message:  "success", allbooks: books });
+        } catch (error) {
+        console.log(error)
+        }
+    };
     
 
 module.exports= {
     addbook: addbook,
-    getAllBooks: getAllBooks
+    getAllBooks: getAllBooks,
+    deletebookbytitle: deletebookbytitle
 };
