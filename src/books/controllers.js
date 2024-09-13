@@ -9,8 +9,14 @@ const addbook= async(request, response)=>{
         })
         response.send({ message: "success", book: book });     
 };
+const getAllBooks = async(request, response) =>{
+    const books = await Book.find({});
+    response.send ({message: "success", books: books})
+}
 
+    
 
 module.exports= {
     addbook: addbook,
+    getAllBooks: getAllBooks
 };

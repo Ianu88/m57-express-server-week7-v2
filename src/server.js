@@ -19,9 +19,6 @@ const books = await Book.find({});
 response.send ({message: "success", books: books})
 })
     
-
-
-
 // delete one book by title
 app.delete ("/books/deletebookbytitle", async(request, response) => {
     try {
